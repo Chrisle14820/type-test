@@ -1,0 +1,26 @@
+html {
+  color: gray;
+  background-color: rgb(36, 36, 36);
+}
+
+.active {
+  color: rgb(6, 221, 203);
+}
+
+.done {
+  color: white;
+}
+
+#typing {
+  margin: 0 auto;
+  width: 1000px;
+  font-size: 40px;
+}
+/* #cursor{
+    font-size: 40px;
+} */
+#timer {
+  margin: auto;
+  /* margin: 200px 700px;
+    font-size: 60px; */
+}
