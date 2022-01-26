@@ -1,5 +1,9 @@
 const typingDiv = document.getElementById("typing");
 const timerElement = document.getElementById("timer");
+let timeLimit = 30;
+let timeLeft = timeLimit;
+let characterTyped = 0;
+let timerText = document.getElementById("timer");
 // console.log(typingDiv);
 
 // var cursor = true;
@@ -14,8 +18,8 @@ const timerElement = document.getElementById("timer");
 //           }
 //         }, speed);
 
-// const text = "Stimulate test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.";
-const text = "Hello World";
+const text = "Stimulate test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.";
+// const text = "Hello World";
 
 const characters = text.split("").map((char) => {
   const span = document.createElement("span");
@@ -28,30 +32,55 @@ let cursorIndex = 0;
 let cursorCharacter = characters[cursorIndex];
 cursorCharacter.classList.add("active");
 
-document.addEventListener("keydown", ({ key }) => {
-  console.log(key);
-  if (key === cursorCharacter.innerText) {
+
+document.addEventListener("keypress", e => {
+  if (e.key === cursorCharacter.innerText) {
+    // checks to see if the character being pressed matches the character on screen
     cursorCharacter.classList.remove("active");
-    cursorCharacter.classList.add("done");
+    cursorCharacter.classList.remove("incorrect");
+    cursorCharacter.classList.add("correct");
+    characterTyped++
+    // console.log(characterTyped);
     if (cursorIndex >= text.length - 1) {
       // alert("done")
       return;
     }
-    cursorCharacter = characters[++cursorIndex];
 
+    cursorCharacter = characters[++cursorIndex];
     cursorCharacter.classList.add("active");
-  } else if (key === "Backspace") {
-    if (cursorIndex < 1) {
-      return;
-    }
-    cursorCharacter.classList.remove("active");
-    cursorCharacter.classList.remove("done");
-    cursorCharacter = characters[--cursorIndex];
-    cursorCharacter.classList.remove("done");
-    cursorCharacter.classList.add("active");
+  } else if (e.key !== cursorCharacter.innerText) {
+    // adds an incorrect name to the class name when the wrong character is pressed
+    // cursorCharacter.classList.remove("active");
+    cursorCharacter.classList.add("incorrect");
   }
 });
 
-function startTimer() {
-  timerElement.innerText = 0;
-}
+// document.getElementById("startTimer").addEventListener("click", countTimer);
+function startGame() {
+  clearInterval(timer);
+  timer = setInterval(updateTimer, 1000);
+};
+function resetValues() {
+  timeLeft = timeLimit;
+  timeElapsed = 0;
+  characterTyped = 0;
+  timerText.textContent = timeLeft;
+};
+function updateTimer() {
+  if (timeLeft > 0) {
+    // decrease the current time left
+    timeLeft--;
+ 
+    // update the timer text
+    timerText.textContent = timeLeft;
+  }
+  else {
+    // finish the game
+    finishGame();
+  }
+};
+function finishGame() {
+  clearInterval(timer)
+  wpm = Math.round(((characterTyped / 5) / 0.5));
+  timerText.textContent = "WPM: " + wpm
+};

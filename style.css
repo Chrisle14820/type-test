@@ -4,10 +4,10 @@ html {
 }
 
 .active {
-  color: rgb(6, 221, 203);
+  color: cyan
 }
 
-.done {
+.correct {
   color: white;
 }
 
@@ -21,6 +21,8 @@ html {
 } */
 #timer {
   margin: auto;
-  /* margin: 200px 700px;
-    font-size: 60px; */
+  font-size: 60px;
+}
+.incorrect {
+  color: red;
 }
