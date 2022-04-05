@@ -1,14 +1,18 @@
-html {
+/* html {
   color: gray;
   background-color: rgb(36, 36, 36);
+} */
+
+h1 {
+  text-align: center;
 }
 
 .active {
-  color: cyan
+  color: grey
 }
 
 .correct {
-  color: white;
+  color: green;
 }
 
 #typing {
@@ -16,13 +20,24 @@ html {
   width: 1000px;
   font-size: 40px;
 }
+
 /* #cursor{
     font-size: 40px;
 } */
+
 #timer {
   margin: auto;
   font-size: 60px;
 }
+
 .incorrect {
   color: red;
+}
+
+
+.timer {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
