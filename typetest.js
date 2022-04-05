@@ -18,8 +18,9 @@ let timerText = document.getElementById("timer");
 //           }
 //         }, speed);
 
-const text = "Stimulate test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.";
+// const text = "Stimulate test your typing speed with this standard English paragraph typing test. Watch your typing speed and accuracy increase as you learn about a variety of new topics! Over 40 typing test selections available.";
 // const text = "Hello World";
+const text = "There are two ways to type faster: The best way to increase typing speed is to learn to type the correct way. “Touch typing” means you are able to type with all 10 fingers instead of using a “hunt and peck” method of typing. You can learn how to touch type with Typing.com’s free typing lessons. The second way you can learn to type faster is by playing typing games. Keyboard games like Nitro Type can help you practice your typing speed and increase your words per minute score."
 
 const characters = text.split("").map((char) => {
   const span = document.createElement("span");
